@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="lineicons.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="materialdesignicons.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="fullcalendar.css" />
-    <link rel="stylesheet" href="fullcalendar.css" />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
@@ -331,6 +330,13 @@
         calendarMini.render();
       });
     </script>
+    <script>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.querySelector(".sidebar-nav-wrapper").classList.toggle("active");
+    document.querySelector(".overlay").classList.toggle("active");
+  });
+</script>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // حدد تواريخ عيد الفطر وعيد الأضحى لهذا العام
