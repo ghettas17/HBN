@@ -6,167 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
     <title>HBN</title>
-
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="bootstrap.min.css" />
     <link rel="stylesheet" href="lineicons.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="materialdesignicons.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="fullcalendar.css" />
     <link rel="stylesheet" href="main.css" />
+    <style>
+      table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+      th, td { border: 1px solid #999; padding: 8px; text-align: center; }
+      th { background-color: #f2f2f2; }
+    </style>
   </head>
   <body>
-    <!-- ======== Preloader =========== -->
-    <div id="preloader">
-      <div class="spinner"></div>
-    </div>
-    <!-- ======== Preloader =========== -->
-
-    <!-- ======== sidebar-nav start =========== -->
-    <aside class="sidebar-nav-wrapper">
-      <div class="navbar-logo">
-        <a href="index.html">
-          <img src="logo.svg" alt="logo" />
-        </a>
-      </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="#">
-              <span class="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M8.74999 18.3333C12.2376 18.3333 15.1364 15.8128 15.7244 12.4941C15.8448 11.8143 15.2737 11.25 14.5833 11.25H9.99999C9.30966 11.25 8.74999 10.6903 8.74999 10V5.41666C8.74999 4.7263 8.18563 4.15512 7.50586 4.27556C4.18711 4.86357 1.66666 7.76243 1.66666 11.25C1.66666 15.162 4.83797 18.3333 8.74999 18.3333Z" />
-                  <path
-                    d="M17.0833 10C17.7737 10 18.3432 9.43708 18.2408 8.75433C17.7005 5.14918 14.8508 2.29947 11.2457 1.75912C10.5629 1.6568 10 2.2263 10 2.91665V9.16666C10 9.62691 10.3731 10 10.8333 10H17.0833Z" />
-                </svg>
-              </span>
-              <span class="text">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-item-has-children">
-            <a
-              href="#0"
-              class="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_2"
-              aria-controls="ddmenu_2"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M11.8097 1.66667C11.8315 1.66667 11.8533 1.6671 11.875 1.66796V4.16667C11.875 5.43232 12.901 6.45834 14.1667 6.45834H16.6654C16.6663 6.48007 16.6667 6.50186 16.6667 6.5237V16.6667C16.6667 17.5872 15.9205 18.3333 15 18.3333H5.00001C4.07954 18.3333 3.33334 17.5872 3.33334 16.6667V3.33334C3.33334 2.41286 4.07954 1.66667 5.00001 1.66667H11.8097ZM6.66668 7.70834C6.3215 7.70834 6.04168 7.98816 6.04168 8.33334C6.04168 8.67851 6.3215 8.95834 6.66668 8.95834H10C10.3452 8.95834 10.625 8.67851 10.625 8.33334C10.625 7.98816 10.3452 7.70834 10 7.70834H6.66668ZM6.04168 11.6667C6.04168 12.0118 6.3215 12.2917 6.66668 12.2917H13.3333C13.6785 12.2917 13.9583 12.0118 13.9583 11.6667C13.9583 11.3215 13.6785 11.0417 13.3333 11.0417H6.66668C6.3215 11.0417 6.04168 11.3215 6.04168 11.6667ZM6.66668 14.375C6.3215 14.375 6.04168 14.6548 6.04168 15C6.04168 15.3452 6.3215 15.625 6.66668 15.625H13.3333C13.6785 15.625 13.9583 15.3452 13.9583 15C13.9583 14.6548 13.6785 14.375 13.3333 14.375H6.66668Z" />
-                  <path
-                    d="M13.125 2.29167L16.0417 5.20834H14.1667C13.5913 5.20834 13.125 4.74197 13.125 4.16667V2.29167Z" />
-                </svg>
-              </span>
-              <span class="text">Pages</span>
-            </a>
-            <ul id="ddmenu_2" class="collapse dropdown-nav">
-              <li>
-                <a href="#"> Settings </a>
-              </li>
-            </ul>
-          </li>
-
-          <span class="divider"><hr /></span>
-          <li class="nav-item">
-            <a href="tables.html">
-              <span class="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M1.66666 4.16667C1.66666 3.24619 2.41285 2.5 3.33332 2.5H16.6667C17.5872 2.5 18.3333 3.24619 18.3333 4.16667V9.16667C18.3333 10.0872 17.5872 10.8333 16.6667 10.8333H3.33332C2.41285 10.8333 1.66666 10.0872 1.66666 9.16667V4.16667Z" />
-                  <path
-                    d="M1.875 13.75C1.875 13.4048 2.15483 13.125 2.5 13.125H17.5C17.8452 13.125 18.125 13.4048 18.125 13.75C18.125 14.0952 17.8452 14.375 17.5 14.375H2.5C2.15483 14.375 1.875 14.0952 1.875 13.75Z" />
-                  <path
-                    d="M2.5 16.875C2.15483 16.875 1.875 17.1548 1.875 17.5C1.875 17.8452 2.15483 18.125 2.5 18.125H17.5C17.8452 18.125 18.125 17.8452 18.125 17.5C18.125 17.1548 17.8452 16.875 17.5 16.875H2.5Z" />
-                </svg>
-              </span>
-              <span class="text">Tables</span>
-            </a>
-          </li>
-
-
-        </ul>
-      </nav>
-   
-    </aside>
-    <div class="overlay"></div>
-    <!-- ======== sidebar-nav end =========== -->
-
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
-      <!-- ========== header start ========== -->
-      <header class="header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-5 col-md-5 col-6">
-              <div class="header-left d-flex align-items-center">
-                <div class="menu-toggle-btn mr-15">
-                  <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                    <i class="lni lni-chevron-left me-2"></i> Menu
-                  </button>
-                </div>
-                <div class="header-search d-none d-md-flex">
-                  <form action="#">
-                    <input type="text" placeholder="Search..." />
-                    <button><i class="lni lni-search-alt"></i></button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-7 col-md-7 col-6">
-              <div class="header-right">
-  
-                <!-- profile start -->
-                <div class="profile-box ml-15">
-                  <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="profile-info">
-                      <div class="info">
-                        <div class="image">
-                          <img src="profile-image.png" alt="" />
-                        </div>
-                        <div>
-                          <h6 class="fw-500">Abdo Gh</h6>
-                          <p>Admin</p>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                    <li>
-                      <div class="author-info flex items-center !p-1">
-                        <div class="image">
-                          <img src="profile-image.png" alt="image">
-                        </div>
-                        <div class="content">
-                          <h4 class="text-sm">Abdo Gh</h4>
-                          <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#">
-                        <i class="lni lni-user"></i> View Profile
-                      </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#"> <i class="lni lni-exit"></i> Sign Out </a>
-                    </li>
-                  </ul>
-                </div>
-                <!-- profile end -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!-- ========== header end ========== -->
-
       <!-- ========== section start ========== -->
       <section class="section">
         <div class="container-fluid">
@@ -230,26 +84,29 @@
               </div>
               <!-- End Icon Cart -->
             </div>
-  
           </div>
           <!-- End Row -->
           <div class="row">
             <div class="col-lg-6">
-              <div class="card-style calendar-card mb-30">
-                <div id="calendar-mini"></div>
-              </div>
+              <table id="eidTable">
+                <thead>
+                  <tr>
+                    <th>السنة الميلادية</th>
+                    <th>عيد الفطر</th>
+                    <th>عيد الأضحى</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
             </div>
-           
             <div class="col-lg-6">
               <div class="input-style-1">
-                <label>start date</label>
+                <label>Start date</label>
                 <input type="date" id="entery_date" placeholder="Enter start date">
-               
               </div>
               <div class="card-style mb-30">
                 <div class="table-wrapper table-responsive">
                   <div class="table-responsive" style="max-height: 330px; overflow-y: auto; border: 1px solid #ddd;">
-
                     <table id="dynamic_table" class="table table-bordered table-striped">
                       <thead class="table-dark">
                         <tr>
@@ -262,10 +119,6 @@
                     </table>
                 </div>
             </div>
-                <!-- something here
-                
-                -->
-
             </div>
             <!-- Display Eid Calculation Messages -->
                 <div id="eid_message" style="margin-top: 20px; font-weight: bold;"></div>
@@ -275,9 +128,6 @@
         </div>
         <!-- end container -->
       </section>
-      <!-- ========== section end ========== -->
-
-      <!-- ========== footer start =========== -->
       <footer class="footer">
         <div class="container-fluid">
           <div class="row">
@@ -305,155 +155,132 @@
       </footer>
       <!-- ========== footer end =========== -->
     </main>
-
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="bootstrap.bundle.min.js"></script>
-    <script src="Chart.min.js"></script>
-    <script src="dynamic-pie-chart.js"></script>
-    <script src="moment.min.js"></script>
-    <script src="fullcalendar.js"></script>
-    <script src="jvectormap.min.js"></script>
-    <script src="world-merc.js"></script>
-    <script src="polyfill.js"></script>
-    <script src="main.js"></script>
 
-    <script>
-      // ====== calendar activation
-      document.addEventListener("DOMContentLoaded", function () {
-        var calendarMiniEl = document.getElementById("calendar-mini");
-        var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
-          initialView: "dayGridMonth",
-          headerToolbar: {
-            end: "today prev,next",
-          },
-        });
-        calendarMini.render();
-      });
-    </script>
-    <script>
-  document.getElementById("menu-toggle").addEventListener("click", () => {
-    document.querySelector(".sidebar-nav-wrapper").classList.toggle("active");
-    document.querySelector(".overlay").classList.toggle("active");
+
+ <script>
+  const eidDates = {
+    2025: { fitr: "31/03/2025", adha: "07/06/2025" },
+    2026: { fitr: "20/03/2026", adha: "27/05/2026" },
+    2027: { fitr: "10/03/2027", adha: "17/05/2027" },
+    2028: { fitr: "27/02/2028", adha: "05/05/2028" },
+    2029: { fitr: "15/02/2029", adha: "24/04/2029" },
+    2030: { fitr: "04/02/2030", adha: "14/04/2030" }
+  };
+
+  function parseDate(str) {
+    const [day, month, year] = str.split('/').map(Number);
+    return new Date(year, month - 1, day);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const tbody = document.querySelector('#eidTable tbody');
+    for (let year = 2025; year <= 2030; year++) {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${year}</td>
+        <td>${eidDates[year]?.fitr || "غير متوفر"}</td>
+        <td>${eidDates[year]?.adha || "غير متوفر"}</td>
+      `;
+      tbody.appendChild(row);
+    }
+
+    const currentYear = new Date().getFullYear();
+    const fitrDateStr = eidDates[currentYear]?.fitr;
+    const adhaDateStr = eidDates[currentYear]?.adha;
+
+    const today = new Date();
+    const fitrDate = parseDate(fitrDateStr);
+    const adhaDate = parseDate(adhaDateStr);
+
+    const daysToAidFitr = Math.ceil((fitrDate - today) / (1000 * 60 * 60 * 24));
+    const daysToAidAdha = Math.ceil((adhaDate - today) / (1000 * 60 * 60 * 24));
+
+    document.getElementById("date_of_aid_fitr_this_year").textContent = fitrDateStr;
+    document.getElementById("number_of_days_to_aid_fitr").textContent = daysToAidFitr >= 0 ? daysToAidFitr : "Passed";
+
+    document.getElementById("date_of_aid_Adha_this_year").textContent = adhaDateStr;
+    document.getElementById("number_of_days_to_aid_adha").textContent = daysToAidAdha >= 0 ? daysToAidAdha : "Passed";
   });
 </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // حدد تواريخ عيد الفطر وعيد الأضحى لهذا العام
-        const aidFitrDate = new Date("2025-03-31");
-        const aidAdhaDate = new Date("2025-06-07"); 
-        
-        // احصل على التاريخ الحالي
-        const today = new Date();
-        
-        // حساب عدد الأيام المتبقية لكل عيد
-        const daysToAidFitr = Math.ceil((aidFitrDate - today) / (1000 * 60 * 60 * 24)-1);
-        const daysToAidAdha = Math.ceil((aidAdhaDate - today) / (1000 * 60 * 60 * 24)-1);
-        
-        // تحديث المحتوى في الصفحة
-        document.getElementById("date_of_aid_fitr_this_year").textContent = aidFitrDate.toLocaleDateString("en-GB");
-        document.getElementById("number_of_days_to_aid_fitr").textContent = daysToAidFitr >= 0 ? daysToAidFitr : "Passed";
-    
-        document.getElementById("date_of_aid_Adha_this_year").textContent = aidAdhaDate.toLocaleDateString("en-GB");
-        document.getElementById("number_of_days_to_aid_adha").textContent = daysToAidAdha >= 0 ? daysToAidAdha : "Passed";
-      });
-    </script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("entery_date").addEventListener("change", generateTable);
-    document.getElementById("date_of_aid_fitr_this_year").addEventListener("change", generateTable);
-
-    // Eid dates
-    const aidFitrDate = new Date("2025-03-31");
-    const aidAdhaDate = new Date("2025-06-07");
-
     function generateTable() {
-      const inputDate = new Date(document.getElementById("entery_date").value);
+  const input = document.getElementById("entery_date").value;
+  const inputDate = new Date(input);
+  if (isNaN(inputDate)) return;
 
-      if (isNaN(inputDate)) return; // Exit if input date is invalid
+  const tableBody = document.querySelector("#dynamic_table tbody");
+  tableBody.innerHTML = ""; // Clear old rows
 
-      // Clear previous table content
-      const table = document.getElementById("dynamic_table");
-      table.innerHTML = ""; // Clear table before adding new rows
+  const states = ["At work", "At home"];
+  let statusIndex = 0;
 
-      // Clear previous messages
-      document.getElementById("eid_message").innerHTML = "";
+  let current = new Date(inputDate);
+  const endDateLimit = new Date("2030-12-31");
 
-      // Add table headers
-      const headerRow = table.insertRow();
-      headerRow.insertCell(0).textContent = "Start";
-      headerRow.insertCell(1).textContent = "End";
-      headerRow.insertCell(2).textContent = "Status";
+  while (current <= endDateLimit) {
+    let startDate = new Date(current);
+    let endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 27);
 
-      // Alternating work/home status
-      const states = ["At work", "At home"];
-      let statusIndex = 0; // 0 for "At work", 1 for "At home"
+    const currentYear = startDate.getFullYear();
+    const fitrStr = eidDates[currentYear]?.fitr;
+    const adhaStr = eidDates[currentYear]?.adha;
 
-      let startDate = new Date(inputDate);
-      let endDate = new Date(startDate);
-      endDate.setDate(endDate.getDate() + 27); // First end date
+    const fitrDate = fitrStr ? parseDate(fitrStr) : null;
+    const adhaDate = adhaStr ? parseDate(adhaStr) : null;
 
-      const oneYearLater = new Date(inputDate);
-      oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+    const row = document.createElement("tr");
+    const startStr = startDate.toISOString().split("T")[0];
+    const endStr = endDate.toISOString().split("T")[0];
+    const currentStatus = states[statusIndex];
 
-      let daysBeforeAidFitr = 0;
-      let daysBeforeAidAdha = 0;
-      let statusBeforeAidFitr = "";
-      let statusBeforeAidAdha = "";
+    row.innerHTML = `
+      <td>${startStr}</td>
+      <td>${endStr}</td>
+      <td>${currentStatus}</td>
+    `;
 
-      while (startDate < oneYearLater) {
-        // Create a new row
-        const row = table.insertRow();
-        row.insertCell(0).textContent = startDate.toISOString().split("T")[0]; // Start Date (YYYY-MM-DD)
-        row.insertCell(1).textContent = endDate.toISOString().split("T")[0];   // End Date (YYYY-MM-DD)
-        row.insertCell(2).textContent = states[statusIndex]; // Alternating status
-
-        // Check if Eid Al-Fitr falls within this period
-        if (aidFitrDate >= startDate && aidFitrDate <= endDate) {
-          row.style.backgroundColor = statusIndex === 0 ? "red" : "green"; // Red for "At work", Green for "At home"
-          row.style.color = "white"; // Make text more readable
-          daysBeforeAidFitr = Math.ceil((aidFitrDate - startDate) / (1000 * 60 * 60 * 24));
-          statusBeforeAidFitr = states[statusIndex]; // Store the correct status
-        }
-
-        // Check if Eid Al-Adha falls within this period
-        if (aidAdhaDate >= startDate && aidAdhaDate <= endDate) {
-          row.style.backgroundColor = statusIndex === 0 ? "red" : "green"; // Red for "At work", Green for "At home"
-          row.style.color = "white"; // Make text more readable
-          daysBeforeAidAdha = Math.ceil((aidAdhaDate - startDate) / (1000 * 60 * 60 * 24));
-          statusBeforeAidAdha = states[statusIndex]; // Store the correct status
-        }
-
-        // Toggle status index for next row
-        statusIndex = 1 - statusIndex; // Switch between 0 and 1
-
-        // Update dates for the next row
-        startDate = new Date(endDate);
-        startDate.setDate(startDate.getDate() + 1); // Next start date
-        endDate = new Date(startDate);
-        endDate.setDate(endDate.getDate() + 27); // Next end date
-
-        if (endDate >= oneYearLater) break; // Stop when reaching one year
-      }
-
-      // Display the calculated days before Eid
-      let message = "";
-      if (daysBeforeAidFitr > 0) {
-        message += `🕌 You will be **${statusBeforeAidFitr}** for **${daysBeforeAidFitr} days** before **Eid Al-Fitr**.<br>`;
-      }
-      if (daysBeforeAidAdha > 0) {
-        message += `🐑 You will be **${statusBeforeAidAdha}** for **${daysBeforeAidAdha} days** before **Eid Al-Adha**.`;
-      }
-
-      document.getElementById("eid_message").innerHTML = message;
+    // Highlight if Eid falls in the range
+    if (fitrDate && fitrDate >= startDate && fitrDate <= endDate) {
+      row.style.backgroundColor = currentStatus === "At work" ? "red" : "green";
+      row.style.color = "white";
+      //document.getElementById("eid_message").innerHTML += `عيد الفطر في ${fitrStr}، الحالة: ${currentStatus}<br>`;
     }
+
+    if (adhaDate && adhaDate >= startDate && adhaDate <= endDate) {
+      row.style.backgroundColor = currentStatus === "At work" ? "red" : "green";
+      row.style.color = "white";
+     // document.getElementById("eid_message").innerHTML += `عيد الأضحى في ${adhaStr}، الحالة: ${currentStatus}<br>`;
+    }
+
+    tableBody.appendChild(row);
+    statusIndex = (statusIndex + 1) % 2;
+    current = new Date(endDate);
+  }
+}
+
   });
+
+  
 </script>
+
 
 <!-- Display Eid Calculation Messages -->
 <div id="eid_message" style="margin-top: 20px; font-weight: bold;"></div>
 
-
+<script src="bootstrap.bundle.min.js"></script>
+<script src="Chart.min.js"></script>
+<script src="dynamic-pie-chart.js"></script>
+<script src="moment.min.js"></script>
+<script src="fullcalendar.js"></script>
+<script src="jvectormap.min.js"></script>
+<script src="world-merc.js"></script>
+<script src="polyfill.js"></script>
+<script src="main.js"></script>
 
   </body>
 </html>
