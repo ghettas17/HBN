@@ -16,13 +16,51 @@
       table { border-collapse: collapse; width: 100%; margin-top: 20px; }
       th, td { border: 1px solid #999; padding: 8px; text-align: center; }
       th { background-color: #f2f2f2; }
+     
+ 
     </style>
+<style>
+  .eid-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 220px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .home {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  .work {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+
+  #eid_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .sticky-header th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #343a40; /* Bootstrap .table-dark */
+    color: white;
+  }
+</style>
+
+    
   </head>
   <body>
     <!-- ======== main-wrapper start =========== -->
-    <main class="main-wrapper">
+    <main class="container">
       <!-- ========== section start ========== -->
-      <section class="section">
+      <section class="">
         <div class="container-fluid">
           <!-- ========== title-wrapper start ========== -->
           <div class="title-wrapper pt-30">
@@ -62,7 +100,7 @@
                   <h6 class="mb-10">Aid El-Fitr</h6>
                        <h3 class="text-bold mb-10">date : <span id="date_of_aid_fitr_this_year"> </span></h3>
                        <p class="text-sm text-success">
-                       <span class="text-gray">(<span id="number_of_days_to_aid_fitr"></span>  days)</span>
+                       <span class="text-gray"><span id="number_of_days_to_aid_fitr"></span>  </span>
                   </p>
                 </div>
               </div>
@@ -78,7 +116,7 @@
                   <h6 class="mb-10">Aid El-Adha</h6>
                        <h3 class="text-bold mb-10">date : <span id="date_of_aid_Adha_this_year"> </span></h3>
                        <p class="text-sm text-success">
-                       <span class="text-gray">(<span id="number_of_days_to_aid_adha"></span>  days)</span>
+                       <span class="text-gray"><span id="number_of_days_to_aid_adha"></span> </span>
                   </p>
                 </div>
               </div>
@@ -88,6 +126,7 @@
           <!-- End Row -->
           <div class="row">
             <div class="col-lg-6">
+              <h3>Static Eid Table</h3>
               <table id="eidTable">
                 <thead>
                   <tr>
@@ -101,29 +140,32 @@
             </div>
             <div class="col-lg-6">
               <div class="input-style-1">
-                <label>Start date</label>
+                <h3>Start date</h3>
                 <input type="date" id="entery_date" placeholder="Enter start date">
               </div>
               <div class="card-style mb-30">
                 <div class="table-wrapper table-responsive">
                   <div class="table-responsive" style="max-height: 330px; overflow-y: auto; border: 1px solid #ddd;">
-                    <table id="dynamic_table" class="table table-bordered table-striped">
-                      <thead class="table-dark">
-                        <tr>
-                          <th>Start</th>
-                          <th>End</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody></tbody> <!-- Table content will be added dynamically -->
-                    </table>
+                    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                      <table id="dynamic_table" class="table table-bordered table-striped">
+                        <thead class="table-dark sticky-header">
+                          <tr>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody> <!-- Table content will be added dynamically -->
+                      </table>
+                    </div>
+                    
                 </div>
             </div>
             </div>
-            <!-- Display Eid Calculation Messages -->
-                <div id="eid_message" style="margin-top: 20px; font-weight: bold;"></div>
             <!-- End Col -->
           </div>
+              <!-- Display Eid Calculation Messages -->
+          <div id="eid_cards" style="display: flex; flex-wrap: wrap; gap: 1rem;"></div>
           <!-- End Row -->
         </div>
         <!-- end container -->
@@ -172,6 +214,14 @@
     const [day, month, year] = str.split('/').map(Number);
     return new Date(year, month - 1, day);
   }
+  function formatDate(d) {
+      return d.toISOString().split('T')[0];
+    }
+
+  function calculateDaysBetween(from, to) {
+      const diff = new Date(to) - new Date(from);
+      return Math.ceil(diff / (1000 * 60 * 60 * 24));
+    }
 
   document.addEventListener("DOMContentLoaded", function () {
     const tbody = document.querySelector('#eidTable tbody');
@@ -196,77 +246,103 @@
     const daysToAidFitr = Math.ceil((fitrDate - today) / (1000 * 60 * 60 * 24));
     const daysToAidAdha = Math.ceil((adhaDate - today) / (1000 * 60 * 60 * 24));
 
-    document.getElementById("date_of_aid_fitr_this_year").textContent = fitrDateStr;
-    document.getElementById("number_of_days_to_aid_fitr").textContent = daysToAidFitr >= 0 ? daysToAidFitr : "Passed";
+   if (fitrDate) {
+        document.getElementById("date_of_aid_fitr_this_year").textContent = fitrDateStr;
+        const today = new Date();
+        const daysToAidFitr = calculateDaysBetween(today, new Date(fitrDate));
+        document.getElementById("number_of_days_to_aid_fitr").textContent = daysToAidFitr >= 0 ? "("+ daysToAidFitr + " days )" : "Already Passed";
+      }
 
+  if (adhaDate) {
     document.getElementById("date_of_aid_Adha_this_year").textContent = adhaDateStr;
-    document.getElementById("number_of_days_to_aid_adha").textContent = daysToAidAdha >= 0 ? daysToAidAdha : "Passed";
+    const today = new Date();
+    const daysToAidAdha = calculateDaysBetween(today, new Date(adhaDate));
+    document.getElementById("number_of_days_to_aid_adha").textContent = daysToAidAdha >= 0 ? "("+ daysToAidAdha + " days )" : "Already Passed";
+  }
+
   });
 </script>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("entery_date").addEventListener("change", generateTable);
-    function generateTable() {
-  const input = document.getElementById("entery_date").value;
-  const inputDate = new Date(input);
-  if (isNaN(inputDate)) return;
-
-  const tableBody = document.querySelector("#dynamic_table tbody");
-  tableBody.innerHTML = ""; // Clear old rows
-
-  const states = ["At work", "At home"];
-  let statusIndex = 0;
-
-  let current = new Date(inputDate);
-  const endDateLimit = new Date("2030-12-31");
-
-  while (current <= endDateLimit) {
-    let startDate = new Date(current);
-    let endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + 27);
-
-    const currentYear = startDate.getFullYear();
-    const fitrStr = eidDates[currentYear]?.fitr;
-    const adhaStr = eidDates[currentYear]?.adha;
-
-    const fitrDate = fitrStr ? parseDate(fitrStr) : null;
-    const adhaDate = adhaStr ? parseDate(adhaStr) : null;
-
-    const row = document.createElement("tr");
-    const startStr = startDate.toISOString().split("T")[0];
-    const endStr = endDate.toISOString().split("T")[0];
-    const currentStatus = states[statusIndex];
-
-    row.innerHTML = `
-      <td>${startStr}</td>
-      <td>${endStr}</td>
-      <td>${currentStatus}</td>
-    `;
-
-    // Highlight if Eid falls in the range
-    if (fitrDate && fitrDate >= startDate && fitrDate <= endDate) {
-      row.style.backgroundColor = currentStatus === "At work" ? "red" : "green";
-      row.style.color = "white";
-      //document.getElementById("eid_message").innerHTML += `عيد الفطر في ${fitrStr}، الحالة: ${currentStatus}<br>`;
-    }
-
-    if (adhaDate && adhaDate >= startDate && adhaDate <= endDate) {
-      row.style.backgroundColor = currentStatus === "At work" ? "red" : "green";
-      row.style.color = "white";
-     // document.getElementById("eid_message").innerHTML += `عيد الأضحى في ${adhaStr}، الحالة: ${currentStatus}<br>`;
-    }
-
-    tableBody.appendChild(row);
-    statusIndex = (statusIndex + 1) % 2;
-    current = new Date(endDate);
-  }
-}
-
-  });
-
   
-</script>
+    function generateTable() {
+      const input = document.getElementById("entery_date").value;
+      const inputDate = new Date(input);
+      if (isNaN(inputDate)) return;
+  
+      const tableBody = document.querySelector("#dynamic_table tbody");
+      const eidCards = document.getElementById("eid_cards");
+      tableBody.innerHTML = "";
+      eidCards.innerHTML = "";
+  
+      const states = ["At Work", "At Home"];
+      let statusIndex = 0;
+      let current = new Date(inputDate);
+      const endDateLimit = new Date("2030-12-31");
+  
+      while (current <= endDateLimit) {
+        let startDate = new Date(current);
+        let endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + 28);
+  
+        const currentYear = startDate.getFullYear();
+        const fitrStr = eidDates[currentYear]?.fitr;
+        const adhaStr = eidDates[currentYear]?.adha;
+  
+        const fitrDate = fitrStr ? parseDate(fitrStr) : null;
+        const adhaDate = adhaStr ? parseDate(adhaStr) : null;
+  
+        const startStr = startDate.toISOString().split("T")[0];
+        const endStr = endDate.toISOString().split("T")[0];
+        const currentStatus = states[statusIndex];
+  
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${startStr}</td>
+          <td>${endStr}</td>
+          <td>${currentStatus}</td>
+        `;
+  
+        // Helper to create card
+        function createEidCard(type, eidDateStr, eidDate) {
+          const className = currentStatus === "At Home" ? "home" : "work";
+          const daysBeforeEid = calculateDaysBetween(startDate, eidDate);
+          const label = currentStatus === "At Home"
+            ? `You will be <b>at home</b> for <b>${daysBeforeEid} days</b> before Eid.`
+            : `You will be <b>at work</b> for <b>${daysBeforeEid} days</b> before Eid.`;
+  
+          const card = `
+            <div class="eid-card ${className}">
+              <h4>${type}</h4>
+              <p><strong>Date:</strong> ${eidDateStr}</p>
+              <p><strong>Status:</strong> ${currentStatus}</p>
+              <p>${label}</p>
+            </div>
+          `;
+          eidCards.innerHTML += card;
+        }
+  
+        if (fitrDate && fitrDate >= startDate && fitrDate <= endDate) {
+          row.style.backgroundColor = currentStatus === "At Work" ? "red" : "green";
+          row.style.color = "white";
+          createEidCard("Eid al-Fitr", fitrStr, fitrDate);
+        }
+  
+        if (adhaDate && adhaDate >= startDate && adhaDate <= endDate) {
+          row.style.backgroundColor = currentStatus === "At Work" ? "red" : "green";
+          row.style.color = "white";
+          createEidCard("Eid al-Adha", adhaStr, adhaDate);
+        }
+  
+        tableBody.appendChild(row);
+        statusIndex = (statusIndex + 1) % 2;
+        current = new Date(endDate);
+      }
+    }
+  });
+  </script>
+  
 
 
 <!-- Display Eid Calculation Messages -->
